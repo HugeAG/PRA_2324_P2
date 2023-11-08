@@ -17,6 +17,22 @@ template<typename t> int BusquedaBinaria( t x, std::vector<t>& V, int ini, int f
 	}
 }
 
+template<typename t> int BusquedaBinaria_Inv( t x, std::vector<t>& V, int ini, int fin){
+	if(ini > fin){
+		return -1;
+	}
+	int medio = (ini + fin) / 2;
+	if(V[medio] == x){
+		return medio;
+	}
+	if(V[medio] < x){
+		return BusquedaBinaria(x, V, ini, (medio - 1));
+	} else {
+		return BusquedaBinaria(x, V, (medio + 1), fin);
+	}
+}
+
+
 template<typename t> int Partition( std::vector<t>& V, int ini, int fin){
 	t x = V[fin];
 	int i = ini;
